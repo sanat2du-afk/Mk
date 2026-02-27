@@ -6,13 +6,11 @@ RUN apt-get update && apt-get install -y git \
 
 WORKDIR /TheMovieProviderBot
 
-COPY requirements.txt .
+COPY . .
+
+RUN chmod +x start.sh
 
 RUN pip install --upgrade pip \
     && pip install -r requirements.txt
 
-COPY . .
-
-RUN chmod +x /start.sh
-
-CMD ["/bin/bash", "/start.sh"]
+CMD ["bash", "start.sh"]
